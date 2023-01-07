@@ -1,0 +1,25 @@
+<svg>
+
+ <rect id="root" width="100%" height="100%" x="0" y="0" />
+  
+ <image id="bell" x="68" y="68" width="121" height="121" href="kettlebel.png" /> 
+
+ <text x="50%" y="50%-15"
+  id="txtKm"
+  font-family="System-Bold" fill="fb-yellow"
+  font-size="180" font-weight="bold"
+  pointer-events="visible" text-length="6"
+  text-anchor="middle">
+ 3,7</text>
+  
+ <text x="50%" y="50%+120"
+  id="txtKlok"
+  font-family="System-Bold" fill="fb-white"
+  font-size="130" font-weight="bold"
+  pointer-events="visible" text-length="6"
+  text-anchor="middle">
+ 20:45</text>
+  
+ <rect width="100%" height="100%" opacity="0" id="tap-target" pointer-events="all"/>    
+  
+</svg>
