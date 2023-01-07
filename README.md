@@ -10,3 +10,6 @@ After 4 minutes it turns black again and then after 50 minutes it stays on so th
 - Training is officially logged in Fitbit's cloud so that you can check everything later after the workout.
 - You have to press the button twice to close the app. This prevents you from accidentally closing the app while doing exercises.
 - Works on Versa and Sense.
+
+Installation:
+https://gallery.fitbit.com/details/f92fa340-e364-4f10-a2c8-d791ae1af2c9
