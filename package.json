@@ -5,7 +5,7 @@
   "fitbit": {
     "appUUID": "f92fa340-e364-4f10-a2c8-d791ae1af2c9",
     "appType": "app",
-    "appDisplayName": "Bootcamp No Extraction",
+    "appDisplayName": "Bootcamp No Distraction",
     "iconFile": "resources/icon.png",
     "wipeColor": "#607d8b",
     "requestedPermissions": [
@@ -19,7 +19,7 @@
     ],
     "i18n": {
       "en-US": {
-        "name": "Bootcamp No Extraction"
+        "name": "Bootcamp No Distraction"
       }
     },
     "defaultLanguage": "en-US"

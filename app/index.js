@@ -11,11 +11,14 @@ const T1=40; // Hiervoor beeld op zwart, trilling en beeld op aantal km en tijd
 const T2=44; // Beeld op zwart
 const T3=50; // Trilling en beeld aan
 
-var TijdMinuten=0;
+//const T1=4; // Hiervoor beeld op zwart, trilling en beeld op aantal km en tijd
+//const T2=6; // Beeld op zwart
+//const T3=8; // Trilling en beeld aan
 
 const STOPPED=-1;
 const STATUSKM=1;
-var Status=STOPPED,KM=0,Klokdisplay="--:--";
+var Status=STOPPED,KM=0,Klokdisplay="--:--",TrainStartTijd=null;
+var TijdMinuten = 0;
 
 const ZWART=0;
 const BEELDAAN=1;
@@ -46,12 +49,17 @@ function Bell(toon) {
  }
 }
 
+var TijdMinuten 
 clock.granularity = "minutes";
-clock.addEventListener("tick", (evt) => {
+clock.addEventListener("tick", (evt) => { 
  let s = convertUTCDateToLocalDate(evt.date).toTimeString().slice(0, -7); // 88:88
  Klokdisplay = s; 
- TijdMinuten++;
- if(Status==STOPPED) TijdMinuten=0;
+   
+ if(Status==STOPPED) {TrainStartTijd=evt.date; return;}
+ if(TrainStartTijd==null) TrainStartTijd=evt.date; 
+ TijdMinuten = (evt.date.getTime()-TrainStartTijd.getTime())/1000/60;  
+ console.log("Tijd="+TijdMinuten) ; 
+ //var TijdMinuten=evt.date-TrainStartTijd
  if(TijdMinuten>=T1 && TijdMinuten<T2 && BELL) {  
   vibration.start("alert");
   setTimeout(function(){vibration.stop();},3000);  
@@ -95,7 +103,7 @@ function Volgende() {
   s.style.fill="black";   
   KM=0;
   exercise.start("run",{disableTouch:false,autopause:false,gps:true});
-  TijdMinuten=0; 
+  TrainStartTijd=null; 
   Bell(true); 
  }
  Status=STATUSKM; 
@@ -112,7 +120,7 @@ display.addEventListener("change", () => {
 
 var watchId = geolocation.watchPosition((position) => { 
  if(Status==STOPPED) {
-  txtKlok.text="Fix!";
+  txtKlok.text="Fix";
   let s = document.getElementById("root"); 
   s.style.fill="fb-green-press";
  }  
